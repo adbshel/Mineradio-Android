@@ -1,14 +1,15 @@
 name: Build Mineradio APK
-
 on:
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          # 尝试保留文件权限位，修复fork丢失权限问题
+          fetch-depth: 0
 
       - name: Set up JDK 17
         uses: actions/setup-java@v5
@@ -18,10 +19,9 @@ jobs:
           cache: gradle
 
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Clean old build cache
-        run: ./gradlew clean
+        run: |
+          chmod +x gradlew
+          ls -la gradlew
 
       - name: Build Release APK
         run: ./gradlew assembleRelease
