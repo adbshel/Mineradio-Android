@@ -40,9 +40,6 @@ jobs:
           cd app/src/main/assets/nodejs-project
           npm install --production
 
-      - name: Run patch.js fix source code
-        run: node patch.js
-
       - name: Build Release APK
         run: |
           chmod +x gradlew
