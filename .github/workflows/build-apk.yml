@@ -28,7 +28,7 @@ jobs:
         run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
 
       - name: Generate Gradle Wrapper
-        run: gradle wrapper --gradle-version 9.7.1
+        run: gradle wrapper --gradle-version 8.5
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
